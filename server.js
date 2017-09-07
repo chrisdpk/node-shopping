@@ -6,8 +6,8 @@ const sqlite = require('sqlite3').verbose();
 var db = new sqlite.Database("list.db");
 clearDB();
 var server = http.createServer(function (req, res) {
-  if (req.method.toLowerCase() == 'get') {
-    if (req.url == "/clear") {
+  if (req.method.toLowerCase() === 'get') {
+    if (req.url === "/clear") {
       clearDB();
       res.writeHead(301, {
         'Expires': 0,
@@ -15,14 +15,18 @@ var server = http.createServer(function (req, res) {
         'Location': '/'
       });
       res.end();
-    } else if (req.url == "/mail") {
+    } else if (req.url === "/mail") {
       // mail list to user
-    }else {
+    } else if (req.url === "/"){
       displayList(res);
+    }else {
+      res.statusCode(404);
+      res.end();
     }
     } else if (req.method.toLowerCase() == 'post') {
-    processForm(req, res);
-    // displayList(res);
+      if(req.url === "/") {
+        processForm(req, res);
+      }
   }
 });
 
@@ -32,15 +36,14 @@ function displayList(res) {
     'Cache-Control': 'no-cache, no-store, must-revalidate',
     'Content-Type': 'text/html'
   });
-  res.write('<html>\r\n<body>\r\n')
   res.write('<ul>\r\n');
   db.each("SELECT name from items", function(err, row) {
-    if (err == null) {
+    if (err === null) {
       res.write('<li>'+row.name+'</li>\r\n');
     }
   });
   res.write('</ul>\r\n');
-  fs.readFile('form.html',function (err, data) {
+  fs.readFile('res/form.html',function (err, data) {
     res.write(data);
     res.end('</body>\r\n</html>');
   });
@@ -66,7 +69,6 @@ function printDB() {
     console.log(row.name);
   });
 }
-
 function clearDB() {
   db.serialize(function () {
     db.run("DROP TABLE IF EXISTS items");
