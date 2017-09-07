@@ -1,0 +1,16 @@
+{
+  "name": "shopping-list",
+  "version": "1.0.0",
+  "description": "A simple shopping list http server that emails submitted items upon request",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Klaus Christoph Meyer",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.1.1",
+    "sqlite3": "^3.1.9"
+  }
+}
