@@ -39,10 +39,10 @@ function displayList(res) {
   });
 
   res.write(fs.readFileSync('res/header.html'));
-  res.write('<ul>\r\n');
+  res.write('<ul class="list-group">\r\n');
   db.each("SELECT name from items", function(err, row) {
     if (err === null) {
-      res.write('<li>'+Entities.encode(row.name)+'</li>\r\n');
+      res.write('<li class="list-group-item">'+Entities.encode(row.name)+'</li>\r\n');
     }
   }, function (err, numrows) {
     res.write('</ul>\r\n');
