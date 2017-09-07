@@ -16,6 +16,7 @@ I do realize this is neither rocket science nor beautifully designed code. As me
 
 * ```node-sqlite3``` (for saving list entries in a local sqlite db)
 * ```formidable``` (for parsing the input field)
+* ```html-entities``` (for escaping malicious entities so we prevent stored XSS)
 * write access to cwd (to create and edit the sqlite db)
 
 
@@ -23,6 +24,5 @@ I do realize this is neither rocket science nor beautifully designed code. As me
 * Upgrade style
 * Single entries should be removable
 * Mail list functionality
-
 
 ![Screenshot](https://raw.githubusercontent.com/chrisyou/node-shopping/master/docs/alpha.png)

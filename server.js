@@ -3,6 +3,7 @@ var fs = require('fs');
 var formidable = require('formidable');
 const util = require('util');
 const sqlite = require('sqlite3').verbose();
+const Entities = require('html-entities').XmlEntities;
 var db = new sqlite.Database("list.db");
 clearDB();
 var server = http.createServer(function (req, res) {
@@ -41,7 +42,7 @@ function displayList(res) {
   res.write('<ul>\r\n');
   db.each("SELECT name from items", function(err, row) {
     if (err === null) {
-      res.write('<li>'+row.name+'</li>\r\n');
+      res.write('<li>'+Entities.encode(row.name)+'</li>\r\n');
     }
   }, function (err, numrows) {
     res.write('</ul>\r\n');

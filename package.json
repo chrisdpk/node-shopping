@@ -1,5 +1,5 @@
 {
-  "name": "shopping-list",
+  "name": "shopping",
   "version": "1.0.0",
   "description": "A simple shopping list http server that emails submitted items upon request",
   "main": "server.js",
@@ -7,10 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Klaus Christoph Meyer",
+  "bugs": {
+    "url": "https://github.com/chrisyou/node-shopping/issues",
+    "email": "klaus.meyer@rub.de"
+  },
+  "author": {
+    "name": "Klaus Christoph Meyer",
+    "email": "klaus.meyer@rub.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisyou/node-shopping.git"
+  },
   "license": "ISC",
   "dependencies": {
     "formidable": "^1.1.1",
+    "html-entities": "^1.2.1",
     "sqlite3": "^3.1.9"
   }
 }
