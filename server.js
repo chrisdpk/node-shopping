@@ -34,7 +34,6 @@ var server = http.createServer(function (req, res) {
         displayList(res,"The ID supplied as GET-Parameter was not parseable as an integer.")
       }
     }else {
-      console.log(req.url);
       res.statusCode = 404;
       res.end();
     }
