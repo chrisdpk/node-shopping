@@ -20,7 +20,7 @@ var server = http.createServer(function (req, res) {
     } else if (req.url === "/"){
       displayList(res);
     }else {
-      res.statusCode(404);
+      res.statusCode = 404;
       res.end();
     }
     } else if (req.method.toLowerCase() == 'post') {
@@ -36,17 +36,20 @@ function displayList(res) {
     'Cache-Control': 'no-cache, no-store, must-revalidate',
     'Content-Type': 'text/html'
   });
+
+  res.write(fs.readFileSync('res/header.html'));
   res.write('<ul>\r\n');
   db.each("SELECT name from items", function(err, row) {
     if (err === null) {
       res.write('<li>'+row.name+'</li>\r\n');
     }
+  }, function (err, numrows) {
+    res.write('</ul>\r\n');
+    res.write(fs.readFileSync('res/form.html'));
+    res.write(fs.readFileSync('res/footer.html'));
+    res.end();
   });
-  res.write('</ul>\r\n');
-  fs.readFile('res/form.html',function (err, data) {
-    res.write(data);
-    res.end('</body>\r\n</html>');
-  });
+
 
 }
 function processForm(req, res) {
