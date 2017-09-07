@@ -22,7 +22,6 @@ I do realize this is neither rocket science nor beautifully designed code. As me
 
 ## To-do:
 * Upgrade style (in progress)
-* Single entries should be removable
 * Mail list functionality
 
 ![Screenshot](https://raw.githubusercontent.com/chrisyou/node-shopping/master/docs/alpha.png)

@@ -31,7 +31,7 @@ var server = http.createServer(function (req, res) {
           res.end();
         });
       }else{
-        // id not not a num
+        displayList(res,"The ID supplied as GET-Parameter was not parseable as an integer.")
       }
     }else {
       console.log(req.url);
@@ -45,7 +45,7 @@ var server = http.createServer(function (req, res) {
   }
 });
 
-function displayList(res) {
+function displayList(res,err) {
   res.writeHead(200, {
     'Expires': 0,
     'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -53,6 +53,9 @@ function displayList(res) {
   });
 
   res.write(fs.readFileSync('res/header.html'));
+  if (err != null) {
+    res.write(fs.readFileSync('res/errormessage.html',{encoding: 'UTF8'}).replace("{{msg}}",err));
+  }
   res.write('<ul class="list-group">\r\n');
   db.each("SELECT name,id from items", function(err, row) {
     if (err === null) {
@@ -89,7 +92,7 @@ function clearDB() {
   });
 }
 function deleteFromDB(id,callback) {
-  // TODO: what if id doesnt exist
+  // for now if id doesn't exist just refresh
   let stmt = db.prepare("DELETE FROM items where id=(?)");
   stmt.run(id);
   stmt.finalize();
