@@ -67,11 +67,6 @@ function insert(item) {
   stmt.run(item);
   stmt.finalize();
 }
-function printDB() {
-  db.each("SELECT name from items", function(err, row) {
-    console.log(row.name);
-  });
-}
 function clearDB() {
   db.serialize(function () {
     db.run("DROP TABLE IF EXISTS items");
