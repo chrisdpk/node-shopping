@@ -1,3 +1,6 @@
 # node-shopping
 
-README is to do
+To-do:
+* Upgrade style
+* Single entries should be removable
+* Mail list functionality
