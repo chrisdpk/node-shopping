@@ -35,7 +35,7 @@ I do realize this is neither rocket science nor beautifully designed code. As me
 
  1. Make sure you have [node installed alongside npm](https://nodejs.org/en/download/).
  2. ```npm install npm@latest -g``` to update npm
- 3. ```git clone https://github.com/chrisyou/node-shopping.git && cd node-shopping``` to download this repository into node-shopping
+ 3. ```git clone https://github.com/chrisdpk/node-shopping.git && cd node-shopping``` to download this repository into node-shopping
  4. ```npm install``` to download and install dependencies for this project only
  5. ```npm start``` to start the server
  6. Press ```CTRL+C``` to quit at any point
